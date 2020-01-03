@@ -1,0 +1,48 @@
+body {
+    background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);
+}
+
+#calculadora {
+    width: 50%;
+    height: 400px;
+    background-color: none;
+    margin: 30px auto;
+}
+
+form input {
+    width: 90%;
+    height: 50px;
+    border: 1px solid #1c1a27;
+    font-size: 19px;
+    padding: 4px;
+    background-color: #801357;
+    margin-bottom: 15px;
+}
+
+#botao {
+    background-color: none;
+    width: 20%;
+    height: 60px;
+    font-size: 50px;
+    line-height: 50px;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    margin: 1px 1px 1px 13px;
+}
+
+#botao:last-child {
+    font-size: 20px;
+    text-transform: uppercase;
+    left: 400px;
+    position: relative;
+    display: block;
+}
+
+#botao:hover {
+    background-color: none;
+    color: #000;
+}

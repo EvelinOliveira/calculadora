@@ -1,0 +1,114 @@
+<html>
+
+<meta charset="utf-8">
+
+<head>
+    <meta charset="utf-8">
+    <title>Calculadora</title>
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <form name="numCalculo" method="post" action="" id="calculadora">
+        <div class="container">
+            <div class="row">
+
+                <input type="text" name="visor" id="visor" />
+
+
+                <div id="botao" class="numero" onclick="calcular(1)" value='1'>1</div>
+                <div id="botao" class="numero" onclick="calcular(2)" value='2'>2</div>
+                <div id="botao" class="numero" onclick="calcular(3)" value='2'>3</div>
+
+                <div id="botao" class="operacao" onclick="oper('somar')" value='+'>+</div>
+
+                <div id="botao" class="numero" onclick="calcular(4)" value='4'>4</div>
+                <div id="botao" class="numero " onclick="calcular(5) " value='5'>5</div>
+                <div id="botao" class="numero " onclick="calcular(6) " value='6'>6</div>
+
+                <div id="botao" class="operacao " onclick="oper('subtrair') " value='-'>-</div>
+
+                <div id="botao" class="numero " onclick="calcular(7) " value='7'>7</div>
+                <div id="botao" class="numero " onclick="calcular(8) " value='8'>8</div>
+                <div id="botao" class="numero " onclick="calcular(9) " value='9'>9</div>
+
+                <div id="botao" class="operacao " onclick="oper( 'multiplicar') " value='*'>*</div>
+
+                <div id="botao" class="numero " onclick="calcular( ',') " value=','>,</div>
+                <div id="botao" class="numero " onclick="calcular(0) " value='0'>0</div>
+                <div id="botao" class="numero " onclick="oper('resultado') " value='='>=</div>
+
+                <div id="botao" class="operacao " onclick="oper('dividir') " value='%'>%</div>
+                <div id="botao" class="numero " onclick="calcLimpar('limpar') " value='limpar'>limpar</div>
+
+            </div>
+        </div>
+    </form>
+
+
+    <script type="text/javascript ">
+        function calcular(numero) {
+            if (typeof gvisor == 'undefined') {
+                document.numCalculo.visor.value = '';
+            }
+            document.numCalculo.visor.value = document.numCalculo.visor.value + numero;
+            gvisor = 1;
+        }
+
+        function calcOper(operacao, valor1, valor2) {
+            if (operacao == "somar") {
+                var valor = parseFloat(valor1) + parseFloat(valor2);
+            } else {
+                if (operacao == "subtrair") {
+                    var valor = valor1 - valor2;
+                } else {
+                    if (operacao == "multiplicar") {
+                        var valor = valor1 * valor2;
+                    } else {
+                        var valor = valor1 / valor2;
+                    }
+                }
+            }
+            return (valor);
+        }
+
+        function oper(operacao) {
+            var valor = document.numCalculo.visor.value;
+            delete gvisor;
+
+            if (typeof goper != 'undefined' && operacao == 'resultado') {
+                gvalor = calcOper(goper, gvalor, valor);
+                document.numCalculo.visor.value = gvalor;
+                delete operacao;
+                delete gvalor;
+                return (0);
+            }
+
+            if (typeof gvalor != 'undefined') {
+                gvalor = calcOper(goper, gvalor, valor);
+                goper = operacao;
+                document.numCalculo.visor.value = gvalor;
+            } else {
+                gvalor = valor;
+                goper = operacao;
+            }
+
+        }
+
+        function calcLimpar() {
+            document.numCalculo.visor.value = '';
+            delete gvalor;
+            delete gvisor;
+            delete goper;
+        }
+    </script>
+
+</body>
+
+</html>
